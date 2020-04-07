@@ -28,6 +28,9 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="network">
+      <UniqueIdentifier>{0d5b3d59-dc47-44c9-9d22-f7c5a2c7e420}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,5 +54,10 @@
     <QtRcc Include="MessagerGUI.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="address.h">
+      <Filter>network</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
