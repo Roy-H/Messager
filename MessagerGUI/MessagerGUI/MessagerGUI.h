@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_MessagerGUI.h"
+#include"Com.h"
 
 class MessagerGUI : public QWidget
 {
@@ -9,7 +10,9 @@ class MessagerGUI : public QWidget
 
 public:
 	MessagerGUI(QWidget *parent = Q_NULLPTR);
-
+public slots:
+	void OnSendBtnClicked();
 private:
 	Ui::MessagerGUIClass ui;
+	std::shared_ptr<Com> m_Com_ptr;
 };

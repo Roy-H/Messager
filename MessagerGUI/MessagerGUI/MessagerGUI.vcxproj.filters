@@ -39,10 +39,19 @@
     <ClCompile Include="MessagerGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="address.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="Com.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MessagerGUI.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Com.h">
+      <Filter>network</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="address.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>
