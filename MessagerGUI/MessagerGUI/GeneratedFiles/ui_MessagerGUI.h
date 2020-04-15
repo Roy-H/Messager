@@ -13,8 +13,10 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -36,12 +38,13 @@ public:
     QVBoxLayout *verticalLayout_3;
     QLineEdit *tcp_input;
     QPushButton *tcp_send_btn;
+    QTableView *tableView;
 
     void setupUi(QWidget *MessagerGUIClass)
     {
         if (MessagerGUIClass->objectName().isEmpty())
             MessagerGUIClass->setObjectName(QString::fromUtf8("MessagerGUIClass"));
-        MessagerGUIClass->resize(600, 400);
+        MessagerGUIClass->resize(919, 603);
         groupBox = new QGroupBox(MessagerGUIClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(20, 20, 157, 120));
@@ -102,6 +105,9 @@ public:
 
         verticalLayout_3->addWidget(tcp_send_btn);
 
+        tableView = new QTableView(MessagerGUIClass);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setGeometry(QRect(40, 400, 851, 192));
 
         retranslateUi(MessagerGUIClass);
 

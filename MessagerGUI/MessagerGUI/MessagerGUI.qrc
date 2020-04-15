@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="MessagerGUI">
+    <qresource prefix="/MessagerGUI">
+        <file alias="black">C:/Users/Huang/Desktop/black.qss</file>
+        <file>black2.qss</file>
     </qresource>
 </RCC>
