@@ -17,6 +17,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -39,6 +40,11 @@ public:
     QLineEdit *tcp_input;
     QPushButton *tcp_send_btn;
     QTableView *tableView;
+    QGroupBox *groupBox_4;
+    QVBoxLayout *verticalLayout_4;
+    QTextEdit *websock_data_input;
+    QPushButton *websock_server_setup;
+    QPushButton *websock_send_btn;
 
     void setupUi(QWidget *MessagerGUIClass)
     {
@@ -47,7 +53,7 @@ public:
         MessagerGUIClass->resize(919, 603);
         groupBox = new QGroupBox(MessagerGUIClass);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(20, 20, 157, 120));
+        groupBox->setGeometry(QRect(20, 20, 191, 120));
         verticalLayout = new QVBoxLayout(groupBox);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -73,7 +79,7 @@ public:
 
         groupBox_2 = new QGroupBox(MessagerGUIClass);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(220, 30, 221, 101));
+        groupBox_2->setGeometry(QRect(240, 30, 221, 101));
         verticalLayout_2 = new QVBoxLayout(groupBox_2);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -108,6 +114,28 @@ public:
         tableView = new QTableView(MessagerGUIClass);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setGeometry(QRect(40, 400, 851, 192));
+        groupBox_4 = new QGroupBox(MessagerGUIClass);
+        groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
+        groupBox_4->setGeometry(QRect(240, 190, 351, 171));
+        verticalLayout_4 = new QVBoxLayout(groupBox_4);
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        websock_data_input = new QTextEdit(groupBox_4);
+        websock_data_input->setObjectName(QString::fromUtf8("websock_data_input"));
+
+        verticalLayout_4->addWidget(websock_data_input);
+
+        websock_server_setup = new QPushButton(groupBox_4);
+        websock_server_setup->setObjectName(QString::fromUtf8("websock_server_setup"));
+
+        verticalLayout_4->addWidget(websock_server_setup);
+
+        websock_send_btn = new QPushButton(groupBox_4);
+        websock_send_btn->setObjectName(QString::fromUtf8("websock_send_btn"));
+
+        verticalLayout_4->addWidget(websock_send_btn);
+
 
         retranslateUi(MessagerGUIClass);
 
@@ -128,6 +156,11 @@ public:
         udp_send_btn->setText(QApplication::translate("MessagerGUIClass", "send", nullptr));
         groupBox_3->setTitle(QApplication::translate("MessagerGUIClass", "tcp", nullptr));
         tcp_send_btn->setText(QApplication::translate("MessagerGUIClass", "send", nullptr));
+        groupBox_4->setTitle(QApplication::translate("MessagerGUIClass", "websocket", nullptr));
+        websock_data_input->setDocumentTitle(QString());
+        websock_data_input->setPlaceholderText(QApplication::translate("MessagerGUIClass", "input data here", nullptr));
+        websock_server_setup->setText(QApplication::translate("MessagerGUIClass", "setup", nullptr));
+        websock_send_btn->setText(QApplication::translate("MessagerGUIClass", "send", nullptr));
     } // retranslateUi
 
 };

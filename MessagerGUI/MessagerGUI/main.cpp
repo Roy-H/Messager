@@ -4,6 +4,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include<QFile>
+#include "WebSockets.h"
 
 int main(int argc, char *argv[])
 {
@@ -28,6 +29,8 @@ int main(int argc, char *argv[])
 		qDebug("Open failed");
 
 	}
+
+	
 	
 	w.show();
 	return a.exec();

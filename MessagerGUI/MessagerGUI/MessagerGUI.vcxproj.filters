@@ -48,6 +48,9 @@
     <ClCompile Include="Socket.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="WebSockets.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MessagerGUI.h">
@@ -61,6 +64,9 @@
     </QtMoc>
     <QtMoc Include="MessagerGUI.cpp">
       <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="WebSockets.h">
+      <Filter>network</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

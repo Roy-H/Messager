@@ -1,5 +1,5 @@
 #include "MessagerGUI.h"
-
+#include"WebSockets.h"
 
 class TableModel : public QAbstractTableModel
 {
@@ -48,7 +48,28 @@ MessagerGUI::MessagerGUI(QWidget *parent)
 
 	m_TcpSocket_ptr = std::make_shared<TcpSocket>();
 	connect(ui.tcp_send_btn, SIGNAL(clicked()), this, SLOT(OnTcpSendBtnClicked()));
-	ui.tableView.
+	
+	connect(ui.websock_send_btn,SIGNAL(clicked()),this,SLOT(OnWebSockSendBtnClicked()));
+	connect(ui.websock_server_setup, SIGNAL(clicked()), this, SLOT(OnWebSockServerSetupBtnClicked()));
+}
+
+void MessagerGUI::OnWebSockSendBtnClicked()
+{
+	/*if (!m_WebSock_ptr)
+		return;*/
+	
+}
+void MessagerGUI::OnWebSockServerSetupBtnClicked()
+{
+	/*if (!m_WebSock_ptr)
+	{*/
+		/*QMessageBox::about(NULL, "error", "server already exist");
+		return;*/
+	//}
+	//m_WebSock_ptr = std::make_shared<WebSock>(1234);
+	m_WebSock_ptr = new WebSock(1234);
+	QMessageBox::about(NULL, "ok", "create websock on 6666");
+
 }
 
 void MessagerGUI::OnComSendBtnClicked()
