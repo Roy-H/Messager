@@ -30,6 +30,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>D:\code\ldcsaa-HP-Socket-dev\HP-Socket\Windows\Include\HPSocket;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\code\ldcsaa-HP-Socket-dev\HP-Socket\Windows\Bin\HPSocket\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -114,8 +116,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="address.cpp" />
+    <ClCompile Include="BasicMessageHub.cpp" />
+    <ClCompile Include="cJSON.cpp" />
     <ClCompile Include="Com.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="HpSocketWrapper.cpp" />
+    <ClCompile Include="JsonHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Network.cpp" />
+    <ClCompile Include="TableControl.cpp" />
+    <ClCompile Include="Tcp.cpp" />
+    <ClCompile Include="Udp.cpp" />
     <ClCompile Include="WebSockets.cpp" />
     <QtMoc Include="MessagerGUI.cpp">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
@@ -133,13 +144,31 @@
     <QtMoc Include="MessagerGUI.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="MessagerGUI.ui" />
+    <QtUic Include="MessagerGUI.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
+    <QtUic Include="MessageTableView.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MessagerGUI.qrc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="address.h" />
+    <ClInclude Include="BasicMessageHub.h" />
+    <ClInclude Include="cJSON.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="IMessageHub.h" />
+    <ClInclude Include="JsonHelper.h" />
+    <ClInclude Include="Messages.h" />
+    <ClInclude Include="Network.h" />
+    <QtMoc Include="TableControl.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebSockets</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_SVG_LIB;QT_WIDGETS_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_WEBSOCKETS_LIB</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebSockets</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_SVG_LIB;QT_WIDGETS_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_WEBSOCKETS_LIB</Define>
+    </QtMoc>
+    <ClInclude Include="Tcp.h" />
+    <ClInclude Include="Udp.h" />
     <QtMoc Include="WebSockets.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebSockets</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_SVG_LIB;QT_WIDGETS_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_WEBSOCKETS_LIB</Define>
@@ -161,6 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="black2.qss" />
+    <None Include="C:\Users\Huang\Desktop\qt_websock_test\http_server.js" />
+    <None Include="C:\Users\Huang\Desktop\qt_websock_test\index.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

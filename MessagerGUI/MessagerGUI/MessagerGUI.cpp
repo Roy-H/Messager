@@ -1,6 +1,7 @@
 #include "MessagerGUI.h"
 #include"WebSockets.h"
-
+#include<QStandardItemModel>
+#include"TableControl.h"
 class TableModel : public QAbstractTableModel
 {
 	Q_OBJECT
@@ -40,9 +41,28 @@ MessagerGUI::MessagerGUI(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	model = new QStandardItemModel(nullptr);
+
+	model->setColumnCount(3);
+	model->setHeaderData(0, Qt::Horizontal, "name");
+	model->setHeaderData(1, Qt::Horizontal, "age");
+	model->setHeaderData(2, Qt::Horizontal, "gender");
 	
+	model->setRowCount(3);
+	model->setHeaderData(0, Qt::Vertical, "item1");
+	model->setHeaderData(1, Qt::Vertical, "item2");
+	model->setHeaderData(2, Qt::Vertical, "item3");
+	model->setItem(0, 0, new QStandardItem("zhangshan"));
+	model->setItem(0, 1, new QStandardItem("3"));
+	model->setItem(0, 2, new QStandardItem("boy"));
+
+	auto tableView = new MessageTable(model, ui.groupBox_info);
+	QSize size;
+	size.setHeight( 500);
+	size.setWidth(1000);
+	tableView->setMinimumSize(size);
 	connect(ui.com_send_btn, SIGNAL(clicked()),this,SLOT(OnComSendBtnClicked()));
-	m_Com_ptr = std::make_shared<Com>(Com::Find(ui.comboBox->currentText()));
+	//m_Com_ptr = std::make_shared<Com>(Com::Find(ui.comboBox->currentText()));
 	m_UdpSocket_ptr = std::make_shared<UdpSocket>();
 	connect(ui.udp_send_btn, SIGNAL(clicked()), this, SLOT(OnUdpSendBtnClicked()));
 

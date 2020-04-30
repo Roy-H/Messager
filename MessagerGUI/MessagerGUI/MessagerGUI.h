@@ -5,6 +5,7 @@
 #include"Com.h"
 #include"Socket.h"
 #include"WebSockets.h"
+#include<QStandardItemModel>
 
 class MessagerGUI : public QWidget
 {
@@ -25,4 +26,5 @@ private:
 	std::shared_ptr<TcpSocket> m_TcpSocket_ptr;
 	//std::shared_ptr<WebSock> m_WebSock_ptr;
 	WebSock*m_WebSock_ptr;
+	QStandardItemModel* model;
 };

@@ -34,6 +34,12 @@
     <Filter Include="Resource Files\qss">
       <UniqueIdentifier>{d4c64da7-d788-4826-ab0f-63d654577866}</UniqueIdentifier>
     </Filter>
+    <Filter Include="network\websock_test">
+      <UniqueIdentifier>{bcd9bc46-9e65-4ba4-8b67-42c68ba24c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control">
+      <UniqueIdentifier>{5894b27b-b97c-41e0-8200-9ad9a4812e8c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -49,6 +55,33 @@
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="WebSockets.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HpSocketWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Udp.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonHelper.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="cJSON.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="TableControl.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicMessageHub.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="Tcp.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,10 +101,16 @@
     <QtMoc Include="WebSockets.h">
       <Filter>network</Filter>
     </QtMoc>
+    <QtMoc Include="TableControl.h">
+      <Filter>Control</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MessagerGUI.ui">
       <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MessageTableView.ui">
+      <Filter>Control</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
@@ -83,10 +122,43 @@
     <ClInclude Include="address.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Udp.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonHelper.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="cJSON.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="IMessageHub.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicMessageHub.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp.h">
+      <Filter>network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="black2.qss">
       <Filter>Resource Files\qss</Filter>
+    </None>
+    <None Include="C:\Users\Huang\Desktop\qt_websock_test\http_server.js">
+      <Filter>network\websock_test</Filter>
+    </None>
+    <None Include="C:\Users\Huang\Desktop\qt_websock_test\index.html">
+      <Filter>network\websock_test</Filter>
     </None>
   </ItemGroup>
 </Project>

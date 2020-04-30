@@ -13,153 +13,153 @@
   <property name="windowTitle">
    <string>MessagerGUI</string>
   </property>
-  <widget class="QGroupBox" name="groupBox">
+  <widget class="QGroupBox" name="groupBox_5">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>191</width>
-     <height>120</height>
+     <x>9</x>
+     <y>9</y>
+     <width>785</width>
+     <height>332</height>
     </rect>
    </property>
    <property name="title">
-    <string>serial port</string>
+    <string>GroupBox</string>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QLineEdit" name="com_input"/>
-    </item>
-    <item>
-     <widget class="QComboBox" name="comboBox">
-      <item>
-       <property name="text">
-        <string>COM1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>COM2</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>COM3</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>COM4</string>
-       </property>
-      </item>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>serial port</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLineEdit" name="com_input"/>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>COM1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>COM2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>COM3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>COM4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="com_send_btn">
+         <property name="text">
+          <string>发送</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="com_send_btn">
-      <property name="text">
-       <string>发送</string>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string>tcp</string>
       </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLineEdit" name="tcp_input"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tcp_send_btn">
+         <property name="text">
+          <string>send</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="title">
+       <string>websocket</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QTextEdit" name="websock_data_input">
+         <property name="documentTitle">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>input data here</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="websock_server_setup">
+         <property name="text">
+          <string>setup</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="websock_send_btn">
+         <property name="text">
+          <string>send</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="title">
+       <string>udp</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="udp_input"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="udp_send_btn">
+         <property name="text">
+          <string>send</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QGroupBox" name="groupBox_2">
+  <widget class="QGroupBox" name="groupBox_info">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>30</y>
-     <width>221</width>
-     <height>101</height>
+     <x>9</x>
+     <y>363</y>
+     <width>901</width>
+     <height>231</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>16</height>
+    </size>
    </property>
    <property name="title">
-    <string>udp</string>
+    <string>GroupBox</string>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QLineEdit" name="udp_input"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="udp_send_btn">
-      <property name="text">
-       <string>send</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_3">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>190</y>
-     <width>191</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>tcp</string>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
-     <widget class="QLineEdit" name="tcp_input"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="tcp_send_btn">
-      <property name="text">
-       <string>send</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>400</y>
-     <width>851</width>
-     <height>192</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_4">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>190</y>
-     <width>351</width>
-     <height>171</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>websocket</string>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_4">
-    <item>
-     <widget class="QTextEdit" name="websock_data_input">
-      <property name="documentTitle">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>input data here</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="websock_server_setup">
-      <property name="text">
-       <string>setup</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="websock_send_btn">
-      <property name="text">
-       <string>send</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
