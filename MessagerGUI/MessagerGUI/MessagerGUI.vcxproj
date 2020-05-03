@@ -121,6 +121,7 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="JsonHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MessageHelper.cpp" />
     <ClCompile Include="TableControl.cpp" />
     <ClCompile Include="Tcp.cpp" />
     <ClCompile Include="TestMessage.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="IMessageHelper.h" />
     <ClInclude Include="IMessageHub.h" />
     <ClInclude Include="JsonHelper.h" />
+    <ClInclude Include="MessageHelper.h" />
     <ClInclude Include="Messages.h" />
     <QtMoc Include="TableControl.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebSockets</IncludePath>

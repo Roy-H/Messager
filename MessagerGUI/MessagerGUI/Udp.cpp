@@ -9,6 +9,10 @@ EnHandleResult UdpServerListener::OnPrepareListen(IUdpServer * pSender, SOCKET s
 
 EnHandleResult UdpServerListener::OnAccept(IUdpServer * pSender, CONNID dwConnID, UINT_PTR pSockAddr)
 {
+	//create helper by helper factory;
+	MessageHelper* helper = new MessageHelper();
+	mMessageHub->AddHelper(dwConnID, helper);
+	pSender->SetConnectionExtra(dwConnID, helper);
 	return HR_OK;
 }
 
@@ -19,9 +23,12 @@ EnHandleResult UdpServerListener::OnHandShake(IUdpServer * pSender, CONNID dwCon
 
 EnHandleResult UdpServerListener::OnReceive(IUdpServer * pSender, CONNID dwConnID, const BYTE* pData, int iLength)
 {
+	//PVOID* pp;
+	//pSender->GetConnectionExtra(dwConnID, pp);
+	
 	if (mMessageHub)
 	{
-		//mMessageHub->HandleData(dwConnID,(char*)pData, iLength);
+		mMessageHub->HandleData(dwConnID,(char*)pData, iLength);
 	}
 	return HR_OK;
 }
@@ -38,6 +45,10 @@ EnHandleResult UdpServerListener::OnShutdown(IUdpServer * pSender)
 
 EnHandleResult UdpServerListener::OnClose(IUdpServer * pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode)
 {
+	if (mMessageHub)
+	{
+		mMessageHub->RemoveHelper(dwConnID);
+	}
 	qDebug() << "错误码：" << iErrorCode;
 	QMessageBox::about(NULL, "warn", QString::fromLocal8Bit("udp 服务端 连接关闭！"));
 	return HR_OK;
@@ -78,7 +89,7 @@ EnHandleResult UdpClientListener::OnClose(IUdpClient * pSender, CONNID dwConnID,
 }
 //client end
 
-void Udp::StartServer(IMessageHub* messageHub = nullptr)
+void Udp::StartServer(IMessageHub* messageHub)
 {
 	if (m_udpServerListener_ptr == nullptr)
 	{

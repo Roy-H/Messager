@@ -36,7 +36,7 @@ class UdpClientListener:public CUdpClientListener
 class Udp
 {
 public:
-	void StartServer(IMessageHub* messageHun);
+	void StartServer(IMessageHub* messageHun = nullptr);
 	void StopServer();
 	void StartClient();
 	void StopClient();

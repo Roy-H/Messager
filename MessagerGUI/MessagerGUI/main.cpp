@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
 	JsonHelper jsonHelper;
 	jsonHelper.Test();
 	
-
+	Udp udp;
+	udp.StartServer();
 	w.show();
 	return a.exec();
 }

@@ -9,7 +9,6 @@ public:
 	virtual void GetHeader(char* pData,int& iLenght) override;
 	virtual void GetData(char* pData, int& iLenght) override;
 	virtual void MakeCheckNum() override;
-
 private:
 	ST_TestMessage mST_TestMessage;
 };
