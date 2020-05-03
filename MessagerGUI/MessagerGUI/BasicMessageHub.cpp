@@ -1,6 +1,5 @@
 #include"BasicMessageHub.h"
 
-
 void BasicMessageHub::HandleData(CONNID dwConnID, const char * pData, const int iLength)
 {
 	if (mHelpers.find(dwConnID)!= mHelpers.end())
@@ -32,3 +31,29 @@ void BasicMessageHub::RemoveHelper(CONNID dwConnID)
 		delete p;
 	}
 }
+
+void BasicMessageHub::Register(const QObject * qObject, int msgId)
+{
+	mMsgReceiver[msgId].push_back(qObject);
+}
+
+void BasicMessageHub::Unregister(const QObject * qObject, int msgId)
+{
+
+	for (auto i = mMsgReceiver[msgId].begin(); i != mMsgReceiver[msgId].end(); i++)
+	{
+		if (*i == qObject)
+		{
+			mMsgReceiver[msgId].erase(i);
+			break;
+		}
+	}
+	
+	
+}
+
+void BasicMessageHub::NewMsgGenerate(int msgId, const IMessage & msg)
+{
+	//emit(mMsgReceiver[msgId])
+}
+

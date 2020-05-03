@@ -1,9 +1,22 @@
 #pragma once
-
+#include<QObject>
 #include"IMessageHelper.h"
-class MessageHelper:public IMessageHelper
+//#include "BasicMessageHub.h"
+class BasicMessageHub;
+class MessageHelper:public QObject,public IMessageHelper
 {
+	Q_OBJECT
 public:
-	virtual void GenerateMessage() override;
+	MessageHelper(std::shared_ptr<BasicMessageHub> hub):mMsgHub(hub)
+	{
 
+	}
+	virtual void GenerateMessage() override;
+	virtual int GetMsgId()override;
+	virtual void SetMsgId(int msgId) override;
+signals:
+	void OnMessageCome();
+private:
+	std::shared_ptr<BasicMessageHub> mMsgHub;
+	int mMsgId;
 };

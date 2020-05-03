@@ -4,7 +4,7 @@
 #include<HPSocket.h>
 #include<HPTypeDef.h>
 #include "Config.h"
-#include "IMessageHub.h"
+#include "BasicMessageHub.h"
 class UdpServerListener :public CUdpServerListener
 {
 	public:
@@ -17,9 +17,9 @@ class UdpServerListener :public CUdpServerListener
 		virtual EnHandleResult OnClose(IUdpServer* pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode) override;
 
 public:
-	void SetMessageHub(IMessageHub* messageHub) { mMessageHub = messageHub; };
+	void SetMessageHub(BasicMessageHub* messageHub) { mMessageHub = messageHub; };
 private:
-	IMessageHub *mMessageHub = nullptr;
+	BasicMessageHub *mMessageHub = nullptr;
 };
 
 
@@ -36,7 +36,7 @@ class UdpClientListener:public CUdpClientListener
 class Udp
 {
 public:
-	void StartServer(IMessageHub* messageHun = nullptr);
+	void StartServer(BasicMessageHub* messageHun = nullptr);
 	void StopServer();
 	void StartClient();
 	void StopClient();

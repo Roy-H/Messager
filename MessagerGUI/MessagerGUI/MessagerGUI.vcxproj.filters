@@ -113,6 +113,9 @@
     <QtMoc Include="WebSockets.h">
       <Filter>network\Qt</Filter>
     </QtMoc>
+    <QtMoc Include="MessageHelper.h">
+      <Filter>network\Message</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MessagerGUI.ui">
@@ -159,9 +162,6 @@
       <Filter>network\Configs</Filter>
     </ClInclude>
     <ClInclude Include="TestMessage.h">
-      <Filter>network\Message</Filter>
-    </ClInclude>
-    <ClInclude Include="MessageHelper.h">
       <Filter>network\Message</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,7 +10,7 @@ EnHandleResult UdpServerListener::OnPrepareListen(IUdpServer * pSender, SOCKET s
 EnHandleResult UdpServerListener::OnAccept(IUdpServer * pSender, CONNID dwConnID, UINT_PTR pSockAddr)
 {
 	//create helper by helper factory;
-	MessageHelper* helper = new MessageHelper();
+	MessageHelper* helper = new MessageHelper(std::shared_ptr<BasicMessageHub>(mMessageHub));
 	mMessageHub->AddHelper(dwConnID, helper);
 	pSender->SetConnectionExtra(dwConnID, helper);
 	return HR_OK;
@@ -89,7 +89,7 @@ EnHandleResult UdpClientListener::OnClose(IUdpClient * pSender, CONNID dwConnID,
 }
 //client end
 
-void Udp::StartServer(IMessageHub* messageHub)
+void Udp::StartServer(BasicMessageHub* messageHub)
 {
 	if (m_udpServerListener_ptr == nullptr)
 	{
