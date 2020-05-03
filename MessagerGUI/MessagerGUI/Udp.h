@@ -1,11 +1,10 @@
 #pragma once
-#include<HPSocket.h>
-#include<HPTypeDef.h>
 #include<memory>
 #include<thread>
+#include<HPSocket.h>
+#include<HPTypeDef.h>
 #include "Config.h"
 #include "IMessageHub.h"
-#pragma comment(lib,"D:/code/ldcsaa-HP-Socket-dev/HP-Socket/Windows/Bin/HPSocket/x64/HPSocket.lib")
 class UdpServerListener :public CUdpServerListener
 {
 	public:
@@ -37,7 +36,7 @@ class UdpClientListener:public CUdpClientListener
 class Udp
 {
 public:
-	void StartServer(IMessageHub* messageHun = nullptr);
+	void StartServer(IMessageHub* messageHun);
 	void StopServer();
 	void StartClient();
 	void StopClient();

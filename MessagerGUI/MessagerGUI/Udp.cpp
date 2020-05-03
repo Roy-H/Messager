@@ -21,7 +21,7 @@ EnHandleResult UdpServerListener::OnReceive(IUdpServer * pSender, CONNID dwConnI
 {
 	if (mMessageHub)
 	{
-		mMessageHub->HandleData((char*)pData, iLength);
+		//mMessageHub->HandleData(dwConnID,(char*)pData, iLength);
 	}
 	return HR_OK;
 }
@@ -38,7 +38,7 @@ EnHandleResult UdpServerListener::OnShutdown(IUdpServer * pSender)
 
 EnHandleResult UdpServerListener::OnClose(IUdpServer * pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode)
 {
-	qDebug << "´íÎóÂë£º" << iErrorCode;
+	qDebug() << "´íÎóÂë£º" << iErrorCode;
 	QMessageBox::about(NULL, "warn", QString::fromLocal8Bit("udp ·þÎñ¶Ë Á¬½Ó¹Ø±Õ£¡"));
 	return HR_OK;
 }

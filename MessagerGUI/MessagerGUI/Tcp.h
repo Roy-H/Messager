@@ -1,11 +1,11 @@
 #pragma once
-#include<HPSocket.h>
-#include<HPTypeDef.h>
+
 #include<memory>
 #include<thread>
+#include<HPSocket.h>
+#include<HPTypeDef.h>
 #include "Config.h"
 #include "IMessageHub.h"
-#pragma comment(lib,"D:/code/ldcsaa-HP-Socket-dev/HP-Socket/Windows/Bin/HPSocket/x64/HPSocket.lib")
 class TcpServerListener :public CTcpPullServerListener
 {
 public:
@@ -24,15 +24,12 @@ private:
 	IMessageHub * mMessageHub = nullptr;
 };
 
-
 class TcpClientListener :public CTcpPullClientListener
 {
 	virtual EnHandleResult OnPrepareConnect(ITcpClient* pSender, CONNID dwConnID, SOCKET socket) override;
 	virtual EnHandleResult OnConnect(ITcpClient* pSender, CONNID dwConnID) override;
 	virtual EnHandleResult OnHandShake(ITcpClient* pSender, CONNID dwConnID) override;
-	//virtual EnHandleResult OnReceive(ITcpClient* pSender, CONNID dwConnID, const BYTE* pData, int iLength) override;
 	virtual EnHandleResult OnReceive(ITcpClient* pSender, CONNID dwConnID, int iLength)override;
-	
 	virtual EnHandleResult OnSend(ITcpClient* pSender, CONNID dwConnID, const BYTE* pData, int iLength) override;
 	virtual EnHandleResult OnClose(ITcpClient* pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode)override;
 };
@@ -40,7 +37,7 @@ class TcpClientListener :public CTcpPullClientListener
 class Tcp
 {
 public:
-	void StartServer(IMessageHub* messageHun = nullptr);
+	void StartServer(IMessageHub* messageHun);
 	void StopServer();
 	void StartClient();
 	void StopClient();

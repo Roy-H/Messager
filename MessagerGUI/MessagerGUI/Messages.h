@@ -1,6 +1,4 @@
 #pragma once
-#pragma pack(push,2)
-
 struct node {
 
 	int e = 1;
@@ -9,6 +7,15 @@ struct node {
 	char b = 0x02;
 
 };
-#pragma pack(pop)
+
+struct ST_TestMessage
+{
+	//报文头;第一个字节标识, 第二自己报文长度,第三字节报文类型
+	unsigned char header[3] = { 0x7e,0x00,0x01 };
+	unsigned char data[20];
+	unsigned char checkSun;
+};
+
+
 
 

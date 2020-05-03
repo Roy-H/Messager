@@ -9,6 +9,7 @@ EnHandleResult TcpServerListener::OnPrepareListen(ITcpServer * pSender, SOCKET s
 
 EnHandleResult TcpServerListener::OnAccept(ITcpServer * pSender, CONNID dwConnID, UINT_PTR pSockAddr)
 {
+	//pSender->SetConnectionExtra(,PVOID)
 	return HR_OK;
 }
 
@@ -21,7 +22,7 @@ EnHandleResult TcpServerListener::OnReceive(ITcpServer * pSender, CONNID dwConnI
 {
 	if (mMessageHub)
 	{
-		mMessageHub->HandleData((char*)pData, iLength);
+		//mMessageHub->HandleData(dwConnID,(char*)pData, iLength);
 	}
 	return HR_OK;
 }
@@ -42,12 +43,13 @@ EnHandleResult TcpServerListener::OnSend(ITcpServer * pSender, CONNID dwConnID, 
 
 EnHandleResult TcpServerListener::OnShutdown(ITcpServer * pSender)
 {
+	qDebug() << "服务关闭：";
 	return HR_OK;
 }
 
 EnHandleResult TcpServerListener::OnClose(ITcpServer * pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode)
 {
-	qDebug << "错误码：" << iErrorCode;
+	qDebug() << "错误码：" << iErrorCode;
 	QMessageBox::about(NULL, "warn", QString::fromLocal8Bit("udp 服务端 连接关闭！"));
 	return HR_OK;
 }
@@ -126,32 +128,6 @@ void Tcp::StopClient()
 	(*m_client_ptr)->Stop();
 }
 
-EnHandleResult TcpClientListener::OnPrepareConnect(ITcpClient * pSender, CONNID dwConnID, SOCKET socket)
-{
-	return HR_OK;
-}
 
-EnHandleResult TcpClientListener::OnConnect(ITcpClient * pSender, CONNID dwConnID)
-{
-	return HR_OK;
-}
 
-EnHandleResult TcpClientListener::OnHandShake(ITcpClient * pSender, CONNID dwConnID)
-{
-	return HR_OK;
-}
 
-EnHandleResult TcpClientListener::OnReceive(ITcpClient * pSender, CONNID dwConnID, int iLength)
-{
-	return HR_OK;
-}
-
-EnHandleResult TcpClientListener::OnSend(ITcpClient * pSender, CONNID dwConnID, const BYTE * pData, int iLength)
-{
-	return HR_OK;
-}
-
-EnHandleResult TcpClientListener::OnClose(ITcpClient * pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode)
-{
-	return HR_OK;
-}

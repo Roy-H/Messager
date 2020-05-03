@@ -40,69 +40,75 @@
     <Filter Include="Control">
       <UniqueIdentifier>{5894b27b-b97c-41e0-8200-9ad9a4812e8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="network\Message">
+      <UniqueIdentifier>{e1f264b6-ca80-4922-910c-9e2710de9244}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network\Configs">
+      <UniqueIdentifier>{de542a5c-c299-428f-a804-5fe623eebc16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network\Qt">
+      <UniqueIdentifier>{4455ac28-7ef1-4d55-bc1e-0e072dec40e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network\Configs\Json">
+      <UniqueIdentifier>{82d24966-9d13-4897-a427-220773ee0c20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="address.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="Com.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="Socket.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="WebSockets.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="Network.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HpSocketWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Udp.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="Config.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="JsonHelper.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="cJSON.cpp">
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="TableControl.cpp">
       <Filter>Control</Filter>
     </ClCompile>
-    <ClCompile Include="BasicMessageHub.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
     <ClCompile Include="Tcp.cpp">
       <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket.cpp">
+      <Filter>network\Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="Com.cpp">
+      <Filter>network\Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="WebSockets.cpp">
+      <Filter>network\Qt</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonHelper.cpp">
+      <Filter>network\Configs\Json</Filter>
+    </ClCompile>
+    <ClCompile Include="cJSON.cpp">
+      <Filter>network\Configs\Json</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicMessageHub.cpp">
+      <Filter>network\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>network\Configs</Filter>
+    </ClCompile>
+    <ClCompile Include="TestMessage.cpp">
+      <Filter>network\Message</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MessagerGUI.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="Com.h">
-      <Filter>network</Filter>
-    </QtMoc>
-    <QtMoc Include="Socket.h">
-      <Filter>network</Filter>
-    </QtMoc>
     <QtMoc Include="MessagerGUI.cpp">
       <Filter>Source Files</Filter>
     </QtMoc>
-    <QtMoc Include="WebSockets.h">
-      <Filter>network</Filter>
-    </QtMoc>
     <QtMoc Include="TableControl.h">
       <Filter>Control</Filter>
+    </QtMoc>
+    <QtMoc Include="Socket.h">
+      <Filter>network\Qt</Filter>
+    </QtMoc>
+    <QtMoc Include="Com.h">
+      <Filter>network\Qt</Filter>
+    </QtMoc>
+    <QtMoc Include="WebSockets.h">
+      <Filter>network\Qt</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -119,35 +125,38 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="address.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Udp.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="JsonHelper.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="cJSON.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="Messages.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="IMessageHub.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="BasicMessageHub.h">
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="Tcp.h">
       <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages.h">
+      <Filter>network\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonHelper.h">
+      <Filter>network\Configs\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="IMessageHub.h">
+      <Filter>network\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="IMessageHelper.h">
+      <Filter>network\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="IMessage.h">
+      <Filter>network\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="cJSON.h">
+      <Filter>network\Configs\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicMessageHub.h">
+      <Filter>network\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>network\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="TestMessage.h">
+      <Filter>network\Message</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

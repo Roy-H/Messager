@@ -5,10 +5,10 @@
 #include <QSerialPortInfo>
 #include<QFile>
 #include "WebSockets.h"
-#include "Network.h"
 #include "Udp.h"
 #include "JsonHelper.h"
 
+#pragma comment(lib,"D:/code/ldcsaa-HP-Socket-dev/HP-Socket/Windows/Bin/HPSocket/x64/HPSocket.lib")
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
@@ -34,10 +34,7 @@ int main(int argc, char *argv[])
 	
 	JsonHelper jsonHelper;
 	jsonHelper.Test();
-	//Udp().StartServer();
-	//Widget ww(&w);
 	
-	//ww.show();
 
 	w.show();
 	return a.exec();
