@@ -2,8 +2,8 @@
 
 #include<memory>
 #include<thread>
-#include<HPSocket.h>
-#include<HPTypeDef.h>
+#include<HPSocket/HPSocket.h>
+#include<HPSocket/SocketInterface.h>
 #include "Config.h"
 #include "IMessageHub.h"
 class TcpServerListener :public CTcpPullServerListener

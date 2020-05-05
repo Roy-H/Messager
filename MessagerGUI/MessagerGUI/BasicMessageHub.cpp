@@ -1,59 +1,37 @@
 #include"BasicMessageHub.h"
+#include "Messages.h"
 
-void BasicMessageHub::HandleData(CONNID dwConnID, const char * pData, const int iLength)
+void BasicMessageHub::HandleData(int msgId, const unsigned char * pData, const int iLength)
 {
-	if (mHelpers.find(dwConnID)!= mHelpers.end())
+	auto helper = MessageHelperFactory::CreateHelper(msgId);
+	if (helper == nullptr)
 	{
-		(*mHelpers[dwConnID]).GenerateMessage();
+		qDebug() << "there is no match helper for id:" << msgId;
+		return;
 	}
-	return;
+	helper->HandleMessage(pData, iLength);
 }
 
-void BasicMessageHub::HandleData(CONNID dwConnID, const int iLength)
+//接收到数据第一步要做的
+void BasicMessageHub::RecognizeMsgPackage(CONNID connID, const unsigned char *pData, const int len)
 {
-	return;
+	HandleData(1, pData, len);
 }
 
-void BasicMessageHub::AddHelper(CONNID dwConnID, MessageHelper* helper)
-{
-	//没有出现添加
-	if(mHelpers.find(dwConnID) == mHelpers.end())
-		mHelpers[dwConnID] = helper;
-}
 
-void BasicMessageHub::RemoveHelper(CONNID dwConnID)
-{
-	auto pos = mHelpers.find(dwConnID);
-	if (pos != mHelpers.end())
-	{
-		IMessageHelper* p = mHelpers[dwConnID];
-		mHelpers.erase(dwConnID);
-		delete p;
-	}
-}
-
-void BasicMessageHub::Register(const QObject * qObject, int msgId)
-{
-	mMsgReceiver[msgId].push_back(qObject);
-}
-
-void BasicMessageHub::Unregister(const QObject * qObject, int msgId)
-{
-
-	for (auto i = mMsgReceiver[msgId].begin(); i != mMsgReceiver[msgId].end(); i++)
-	{
-		if (*i == qObject)
-		{
-			mMsgReceiver[msgId].erase(i);
-			break;
-		}
-	}
-	
-	
-}
-
-void BasicMessageHub::NewMsgGenerate(int msgId, const IMessage & msg)
-{
-	//emit(mMsgReceiver[msgId])
-}
-
+//template<class T>
+//int BasicMessageHub::ProcessMsg_1(const unsigned char* pdata, const int len, void* result)
+//{
+//	if (len != sizeof(T))
+//	{
+//		qDebug() << "size of pkg is not match, this pkg will be dropped";
+//		delete pdata;
+//		return 0;
+//	}
+//	T* pPkg = new T();
+//	memset(pPkg, 0, sizeof(T));
+//	memcpy(pPkg, pdata, sizeof(T));
+//	result = pPkg;
+//	delete pdata;
+//	return 1;
+//}

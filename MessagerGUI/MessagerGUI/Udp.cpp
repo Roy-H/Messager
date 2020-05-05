@@ -1,6 +1,7 @@
 #include "Udp.h"
 #include "BasicMessageHub.h"
 #include <QMessageBox>
+#include <thread>
 //server start
 EnHandleResult UdpServerListener::OnPrepareListen(IUdpServer * pSender, SOCKET soListen)
 {
@@ -10,9 +11,9 @@ EnHandleResult UdpServerListener::OnPrepareListen(IUdpServer * pSender, SOCKET s
 EnHandleResult UdpServerListener::OnAccept(IUdpServer * pSender, CONNID dwConnID, UINT_PTR pSockAddr)
 {
 	//create helper by helper factory;
-	MessageHelper* helper = new MessageHelper(std::shared_ptr<BasicMessageHub>(mMessageHub));
-	mMessageHub->AddHelper(dwConnID, helper);
-	pSender->SetConnectionExtra(dwConnID, helper);
+	//MessageHelper* helper = new MessageHelper(std::shared_ptr<BasicMessageHub>(mMessageHub));
+	//mMessageHub->AddHelper(dwConnID, helper);
+	//pSender->SetConnectionExtra(dwConnID, helper);
 	return HR_OK;
 }
 
@@ -23,13 +24,11 @@ EnHandleResult UdpServerListener::OnHandShake(IUdpServer * pSender, CONNID dwCon
 
 EnHandleResult UdpServerListener::OnReceive(IUdpServer * pSender, CONNID dwConnID, const BYTE* pData, int iLength)
 {
-	//PVOID* pp;
-	//pSender->GetConnectionExtra(dwConnID, pp);
-	
-	if (mMessageHub)
-	{
-		mMessageHub->HandleData(dwConnID,(char*)pData, iLength);
-	}
+	//考虑到udp的特殊性不做特殊处理，直接将所有数据读出
+	unsigned char *data = new unsigned char[iLength]();
+	memcpy(data, pData, iLength);
+	auto worker = std::thread(&IMessageHub::RecognizeMsgPackage, mMessageHub, dwConnID, data, iLength);
+	worker.detach();
 	return HR_OK;
 }
 
@@ -45,10 +44,7 @@ EnHandleResult UdpServerListener::OnShutdown(IUdpServer * pSender)
 
 EnHandleResult UdpServerListener::OnClose(IUdpServer * pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode)
 {
-	if (mMessageHub)
-	{
-		mMessageHub->RemoveHelper(dwConnID);
-	}
+	
 	qDebug() << "错误码：" << iErrorCode;
 	QMessageBox::about(NULL, "warn", QString::fromLocal8Bit("udp 服务端 连接关闭！"));
 	return HR_OK;
@@ -89,16 +85,16 @@ EnHandleResult UdpClientListener::OnClose(IUdpClient * pSender, CONNID dwConnID,
 }
 //client end
 
-void Udp::StartServer(BasicMessageHub* messageHub)
+void Udp::StartServer()
 {
 	if (m_udpServerListener_ptr == nullptr)
 	{
 		m_udpServerListener_ptr = new UdpServerListener();
-		if (messageHub == nullptr)
+		if (mMessageHub == nullptr)
 		{
-			messageHub = new BasicMessageHub();
+			mMessageHub = new BasicMessageHub();
 		}
-		m_udpServerListener_ptr->SetMessageHub(messageHub);
+		m_udpServerListener_ptr->SetMessageHub(mMessageHub);
 
 		m_server_ptr = new CUdpServerPtr(m_udpServerListener_ptr);		
 	}

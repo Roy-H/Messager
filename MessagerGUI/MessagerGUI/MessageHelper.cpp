@@ -1,8 +1,10 @@
 #include "MessageHelper.h"
+
+
 #include <QDebug> 
-void MessageHelper::GenerateMessage()
+void MessageHelper::HandleMessage(const unsigned char* pData, const int len)
 {
-	qDebug() << "GenerateMessage";
+	qDebug() << "GenerateMessage MessageHelper";
 	emit OnMessageCome();
 }
 
@@ -14,4 +16,10 @@ void MessageHelper::SetMsgId(int msgId)
 int MessageHelper::GetMsgId()
 {
 	return mMsgId;
+}
+
+void TestMessageHelper::HandleMessage(const unsigned char* pData, const int len)
+{
+	qDebug() << "GenerateMessage TestMessageHelper";
+	emit OnMessageCome();
 }

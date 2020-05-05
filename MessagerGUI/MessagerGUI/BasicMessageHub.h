@@ -4,22 +4,23 @@
 #include "MessageHelper.h"
 #include <QObject>
 #include"IMessage.h"
+#include "MessageHelperFactory.h"
 class MessageHelper;
 class BasicMessageHub:public IMessageHub
 {
-
 public:
-	virtual void HandleData(CONNID dwConnID,const char* pData, const int iLength)override;
-	virtual void HandleData(CONNID dwConnID, const int iLength) override;
-	virtual void AddHelper(CONNID dwConnID, MessageHelper* helper) override;
-	virtual void RemoveHelper(CONNID dwConnID) override;
-	//注册消息信息
-	virtual void Register(const QObject* qObject, int msgId) override;
-	//取消注册消息信息
-	virtual void Unregister(const QObject* qObject, int msgId) override;
-
-	void NewMsgGenerate(int msgId,const IMessage& msg);
+	BasicMessageHub()
+	{
+		MessageHelperFactory::LoadHelperDefault();
+		//mMessageHelperFactoryPtr = new MessageHelperFactory();
+	}
+	virtual void HandleData(int msgId,const unsigned char* pData, const int iLength)override;
+	
+	virtual void RecognizeMsgPackage(CONNID, const unsigned char*, const int)override;
+public:
+	
 private:
 	std::unordered_map<CONNID, MessageHelper*> mHelpers;
 	std::map<int,std::vector<const QObject*>> mMsgReceiver;
+	//MessageHelperFactory* mMessageHelperFactoryPtr;
 };

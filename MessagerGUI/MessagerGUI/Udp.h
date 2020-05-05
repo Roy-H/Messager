@@ -1,10 +1,11 @@
 #pragma once
 #include<memory>
 #include<thread>
-#include<HPSocket.h>
-#include<HPTypeDef.h>
+#include<HPSocket/HPSocket.h>
+#include<HPSocket/SocketInterface.h>
 #include "Config.h"
 #include "BasicMessageHub.h"
+#include "IMessageHub.h"
 class UdpServerListener :public CUdpServerListener
 {
 	public:
@@ -17,9 +18,9 @@ class UdpServerListener :public CUdpServerListener
 		virtual EnHandleResult OnClose(IUdpServer* pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode) override;
 
 public:
-	void SetMessageHub(BasicMessageHub* messageHub) { mMessageHub = messageHub; };
+	void SetMessageHub(IMessageHub* messageHub) { mMessageHub = messageHub; };
 private:
-	BasicMessageHub *mMessageHub = nullptr;
+	IMessageHub *mMessageHub = nullptr;
 };
 
 
@@ -36,10 +37,14 @@ class UdpClientListener:public CUdpClientListener
 class Udp
 {
 public:
-	void StartServer(BasicMessageHub* messageHun = nullptr);
+	void StartServer();
 	void StopServer();
 	void StartClient();
 	void StopClient();
+	Udp(IMessageHub* messageHub):mMessageHub(messageHub)
+	{
+
+	}
 	~Udp()
 	{
 		if(m_udpServerListener_ptr)
@@ -57,4 +62,5 @@ private:
 	UdpClientListener *m_udpClientListener_ptr = nullptr;
 	CUdpServerPtr *m_server_ptr;
 	CUdpClientPtr *m_client_ptr;
+	IMessageHub* mMessageHub;
 };

@@ -93,6 +93,9 @@
     <ClCompile Include="MessageHelper.cpp">
       <Filter>network\Message</Filter>
     </ClCompile>
+    <ClCompile Include="MessageHelperFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MessagerGUI.h">
@@ -162,6 +165,9 @@
       <Filter>network\Configs</Filter>
     </ClInclude>
     <ClInclude Include="TestMessage.h">
+      <Filter>network\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageHelperFactory.h">
       <Filter>network\Message</Filter>
     </ClInclude>
   </ItemGroup>
