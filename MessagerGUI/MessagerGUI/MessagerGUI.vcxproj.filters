@@ -96,6 +96,9 @@
     <ClCompile Include="MessageHelperFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MsgSubscriber.cpp">
+      <Filter>network\Message</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MessagerGUI.h">
@@ -117,6 +120,12 @@
       <Filter>network\Qt</Filter>
     </QtMoc>
     <QtMoc Include="MessageHelper.h">
+      <Filter>network\Message</Filter>
+    </QtMoc>
+    <QtMoc Include="MsgSubscriber.h">
+      <Filter>network\Message</Filter>
+    </QtMoc>
+    <QtMoc Include="BasicMessageHub.h">
       <Filter>network\Message</Filter>
     </QtMoc>
   </ItemGroup>
@@ -157,9 +166,6 @@
     </ClInclude>
     <ClInclude Include="cJSON.h">
       <Filter>network\Configs\Json</Filter>
-    </ClInclude>
-    <ClInclude Include="BasicMessageHub.h">
-      <Filter>network\Message</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>network\Configs</Filter>

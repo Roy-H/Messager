@@ -27,6 +27,7 @@ EnHandleResult UdpServerListener::OnReceive(IUdpServer * pSender, CONNID dwConnI
 	//考虑到udp的特殊性不做特殊处理，直接将所有数据读出
 	unsigned char *data = new unsigned char[iLength]();
 	memcpy(data, pData, iLength);
+
 	auto worker = std::thread(&IMessageHub::RecognizeMsgPackage, mMessageHub, dwConnID, data, iLength);
 	worker.detach();
 	return HR_OK;

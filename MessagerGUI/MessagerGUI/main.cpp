@@ -8,6 +8,7 @@
 #include "Udp.h"
 #include "JsonHelper.h"
 #include "BasicMessageHub.h"
+#include "MsgSubscriber.h"
 
 #pragma comment(lib,"D:/code/ldcsaa-HP-Socket-dev/HP-Socket/Windows/Bin/HPSocket/x64/HPSocket.lib")
 int main(int argc, char *argv[])
@@ -37,6 +38,8 @@ int main(int argc, char *argv[])
 	jsonHelper.Test();
 	
 	IMessageHub* hub = new BasicMessageHub();
+	MsgSubscriber* mSubscriber = new MsgSubscriber();
+	hub->SubscribeMsg(1, mSubscriber);
 	Udp udp(hub);
 	udp.StartServer();
 	w.show();
