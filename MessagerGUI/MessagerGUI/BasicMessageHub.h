@@ -35,6 +35,8 @@ public:
 		mMsgSignals = new MsgSignals();
 		//mMessageHelperFactoryPtr = new MessageHelperFactory();
 	}
+	//virtual void operator ()(int msgId, const unsigned char* pData, const int lenght)override;
+
 	virtual ~BasicMessageHub()
 	{
 		delete mMsgSignals;

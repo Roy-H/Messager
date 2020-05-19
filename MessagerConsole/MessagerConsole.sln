@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MessagerGUI", "..\MessagerG
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowsProject1", "..\MessagerMFC\WindowsProject1\WindowsProject1.vcxproj", "{1F602028-FCD6-4796-A8A3-E56F872641AE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServiceLib", "ServerLib\ServiceLib\ServiceLib.vcxproj", "{EE6E588F-690D-40FE-93AB-9C0350609F82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -39,6 +41,12 @@ Global
 		{1F602028-FCD6-4796-A8A3-E56F872641AE}.Release|x64.Build.0 = Release|x64
 		{1F602028-FCD6-4796-A8A3-E56F872641AE}.Release|x86.ActiveCfg = Release|Win32
 		{1F602028-FCD6-4796-A8A3-E56F872641AE}.Release|x86.Build.0 = Release|Win32
+		{EE6E588F-690D-40FE-93AB-9C0350609F82}.Debug|x64.ActiveCfg = Debug|x64
+		{EE6E588F-690D-40FE-93AB-9C0350609F82}.Debug|x64.Build.0 = Debug|x64
+		{EE6E588F-690D-40FE-93AB-9C0350609F82}.Debug|x86.ActiveCfg = Debug|x64
+		{EE6E588F-690D-40FE-93AB-9C0350609F82}.Release|x64.ActiveCfg = Release|x64
+		{EE6E588F-690D-40FE-93AB-9C0350609F82}.Release|x64.Build.0 = Release|x64
+		{EE6E588F-690D-40FE-93AB-9C0350609F82}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

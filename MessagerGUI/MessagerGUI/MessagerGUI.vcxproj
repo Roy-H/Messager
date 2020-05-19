@@ -29,8 +29,8 @@
     <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>D:\code\ldcsaa-HP-Socket-dev\HP-Socket\Windows\Include;$(IncludePath)</IncludePath>
+    <OutDir>..\..\MessagerConsole\x64\Debug</OutDir>
+    <IncludePath>D:\code\Cpp\Messager\MessagerConsole\ServerLib\ServiceLib;D:\code\ldcsaa-HP-Socket-dev\HP-Socket\Windows\Include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\code\ldcsaa-HP-Socket-dev\HP-Socket\Windows\Bin\HPSocket\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -67,6 +67,7 @@
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Svgd.lib;Qt5Widgetsd.lib;Qt5SerialPortd.lib;Qt5Networkd.lib;Qt5WebSocketsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <MinimumRequiredVersion>5.01</MinimumRequiredVersion>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -82,6 +83,10 @@
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
       <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
     </QtRcc>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -123,6 +128,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MessageHelper.cpp" />
     <ClCompile Include="MessageHelperFactory.cpp" />
+    <ClCompile Include="MessageQueue.cpp" />
     <ClCompile Include="MsgSubscriber.cpp" />
     <ClCompile Include="TableControl.cpp" />
     <ClCompile Include="Tcp.cpp" />
@@ -173,6 +179,7 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_SVG_LIB;QT_WIDGETS_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_WEBSOCKETS_LIB</Define>
     </QtMoc>
     <ClInclude Include="MessageHelperFactory.h" />
+    <ClInclude Include="MessageQueue.h" />
     <ClInclude Include="Messages.h" />
     <QtMoc Include="TableControl.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebSockets</IncludePath>
@@ -188,6 +195,7 @@
     </QtMoc>
     <ClInclude Include="Tcp.h" />
     <ClInclude Include="TestMessage.h" />
+    <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="Udp.h" />
     <QtMoc Include="WebSockets.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtSvg;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtSerialPort;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWebSockets</IncludePath>
@@ -212,6 +220,11 @@
     <None Include="black2.qss" />
     <None Include="C:\Users\Huang\Desktop\qt_websock_test\http_server.js" />
     <None Include="C:\Users\Huang\Desktop\qt_websock_test\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MessagerConsole\ServerLib\ServiceLib\ServiceLib.vcxproj">
+      <Project>{ee6e588f-690d-40fe-93ab-9c0350609f82}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

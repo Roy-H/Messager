@@ -11,5 +11,5 @@ public:
 	virtual void RecognizeMsgPackage(CONNID, const unsigned char*, const int) = 0;
 	virtual void HandleData(int msgId,const unsigned char* pData,const int lenght) =0;
 	virtual void SubscribeMsg(const int msgId, const MsgSubscriber* subscriber) = 0;
-
+	//virtual void operator ()(int msgId, const unsigned char* pData, const int lenght) = 0;
 };

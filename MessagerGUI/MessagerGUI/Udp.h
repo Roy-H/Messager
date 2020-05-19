@@ -6,6 +6,7 @@
 #include "Config.h"
 #include "BasicMessageHub.h"
 #include "IMessageHub.h"
+#include "ThreadPool.h"
 class UdpServerListener :public CUdpServerListener
 {
 	public:
@@ -18,9 +19,15 @@ class UdpServerListener :public CUdpServerListener
 		virtual EnHandleResult OnClose(IUdpServer* pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode) override;
 
 public:
+	UdpServerListener()
+	{
+		if (mPool_ptr == nullptr)
+			mPool_ptr = new ThreadPool(4);
+	}
 	void SetMessageHub(IMessageHub* messageHub) { mMessageHub = messageHub; };
 private:
 	IMessageHub *mMessageHub = nullptr;
+	ThreadPool* mPool_ptr = nullptr;
 };
 
 
@@ -51,16 +58,16 @@ public:
 			delete m_udpServerListener_ptr;
 		if (m_udpClientListener_ptr)
 			delete m_udpClientListener_ptr;
-		if (m_server_ptr)
-			delete m_server_ptr;
-		if (m_client_ptr)
-			delete m_client_ptr;
+		//if (m_server_ptr)
+		//	delete m_server_ptr;
+		//if (m_client_ptr)
+		//	delete m_client_ptr;
 	}
 private:
 	//std::shared_ptr<CUdpServerListener> m_udpServer_ptr;
 	UdpServerListener *m_udpServerListener_ptr = nullptr;
 	UdpClientListener *m_udpClientListener_ptr = nullptr;
-	CUdpServerPtr *m_server_ptr;
-	CUdpClientPtr *m_client_ptr;
-	IMessageHub* mMessageHub;
+	CUdpServerPtr *m_server_ptr = nullptr;
+	CUdpClientPtr *m_client_ptr = nullptr;
+	IMessageHub* mMessageHub = nullptr;
 };

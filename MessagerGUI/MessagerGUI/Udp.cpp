@@ -2,6 +2,8 @@
 #include "BasicMessageHub.h"
 #include <QMessageBox>
 #include <thread>
+#include "ThreadPool.h"
+#include<iostream>
 //server start
 EnHandleResult UdpServerListener::OnPrepareListen(IUdpServer * pSender, SOCKET soListen)
 {
@@ -28,8 +30,16 @@ EnHandleResult UdpServerListener::OnReceive(IUdpServer * pSender, CONNID dwConnI
 	unsigned char *data = new unsigned char[iLength]();
 	memcpy(data, pData, iLength);
 
-	auto worker = std::thread(&IMessageHub::RecognizeMsgPackage, mMessageHub, dwConnID, data, iLength);
-	worker.detach();
+	mPool_ptr->enqueue([] {
+		//std::cout << "thread id:" << std::this_thread::get_id() << std::endl;
+		auto id = std::this_thread::get_id();
+		//int a = id._To_text();
+		//std::cout << "thread id:" << std::this_thread::get_id();
+		qDebug() << "sdasdasdsadasdasdsa";
+	});
+	//auto worker = std::thread(&IMessageHub::RecognizeMsgPackage, mMessageHub, dwConnID, data, iLength);
+	//worker.detach();
+
 	return HR_OK;
 }
 

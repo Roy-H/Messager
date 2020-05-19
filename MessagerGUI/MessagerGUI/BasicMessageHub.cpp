@@ -1,5 +1,22 @@
 #include"BasicMessageHub.h"
 #include "Messages.h"
+#include <thread>
+#include<iostream>
+
+/*
+void BasicMessageHub::operator()(int msgId, const unsigned char * pData, const int lenght)
+{
+	std::cout<<"thread id:" << std::this_thread::get_id() << std::endl;
+	auto helper = std::make_shared<TestMessageHelper>();// new MessageHelper();
+	if (!helper)
+	{
+		qDebug() << "there is no match helper for id:" << msgId;
+		return;
+	}
+	IMessage* msg_ptr = nullptr;
+	msg_ptr = helper->HandleMessage(pData, lenght);
+	mMsgSignals->BroadcastTestMessage(msg_ptr);
+}*/
 
 void BasicMessageHub::HandleData(int msgId, const unsigned char * pData, const int iLength)
 {
@@ -36,8 +53,6 @@ void BasicMessageHub::SubscribeMsg(const int msgId, const MsgSubscriber * subscr
 		mMsgSignals->connect(mMsgSignals, SIGNAL(OnTestMessage2Come(IMessage*)), subscriber, SLOT(OnNewMessageCome(IMessage*)));
 	}
 }
-
-
 
 
 //template<class T>
